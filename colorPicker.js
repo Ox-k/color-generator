@@ -47,3 +47,11 @@ randomButton.addEventListener("click", () => {
   headerLabel.textContent = colorValue;
   //set the color value to the input fields
 });
+
+sStandard.addEventListener("change", () => {
+  if (sStandard.checked) {
+    //do something
+  } else {
+    //do something else
+  }
+});
