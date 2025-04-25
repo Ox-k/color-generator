@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="colorPicker.css" />
+    <title>Color Picker</title>
+  </head>
+  <body>
+    <header>
+      <h1>Color Picker</h1>
+    </header>
+    <main>
+      <div class="selectMode">
+        <input
+          type="radio"
+          name="select"
+          class="radioSize"
+          id="selectStandard"
+          value="stdrd"
+          checked
+        />Auto-generate
+        <input
+          type="radio"
+          name="select"
+          class="radioSize"
+          id="selectSManual"
+          value="mnl"
+        />Manual Input
+        <input
+          type="radio"
+          name="select"
+          class="radioSize"
+          id="selectGradient"
+          value="grdnt"
+        />Add Opacity
+      </div>
+      <!-- auto generating color with a single buton press -->
+      <section class="auto-generator">
+        <button class="random-generate">Generate Color Randomly</button>
+      </section>
+      <!-- generating colors through user input with opacity -->
+      <section class="standard">
+        <input
+          type="text"
+          name="colorDigit"
+          size="1"
+          maxlength="1"
+          class="colorDigit1"
+          placeholder="0"
+        />
+        <input
+          type="text"
+          name="colorDigit"
+          size="1"
+          maxlength="1"
+          class="colorDigit2"
+          placeholder="0"
+        />
+        <input
+          type="text"
+          name="colorDigit"
+          size="1"
+          maxlength="1"
+          class="colorDigit3"
+          placeholder="0"
+        />
+        <input
+          type="text"
+          name="colorDigit"
+          size="1"
+          maxlength="1"
+          class="colorDigit4"
+          placeholder="0"
+        />
+        <input
+          type="text"
+          name="colorDigit"
+          size="1"
+          maxlength="1"
+          class="colorDigit5"
+          placeholder="0"
+        />
+        <input
+          type="text"
+          name="colorDigit"
+          size="1"
+          maxlength="1"
+          class="colorDigit6"
+          placeholder="0"
+        />
+        <input
+          type="text"
+          name="colorOpacity"
+          size="2"
+          maxlength="2"
+          class="colorOpacity"
+          placeholder="00"
+        />
+      </section>
+
+      <!-- generating gradient color through user input with opacity -->
+    </main>
+    <script src="colorPicker.js"></script>
+  </body>
+</html>
