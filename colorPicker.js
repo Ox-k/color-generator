@@ -90,6 +90,7 @@ sManual.addEventListener("change", () => {
 
 //functon that uses returns value from getInputVale()
 sGradient.addEventListener("change", () => {
+  opacityValue.style.visibility ="hidden";
   if (sStandard.checked) {
     //do something
     const standardColor = getInputValue();
