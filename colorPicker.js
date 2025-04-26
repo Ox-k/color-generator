@@ -65,14 +65,39 @@ sStandard.addEventListener("change", () => {
 });
 }
 
+//function to get input values
+function getInputValue(){
+  // check out of bounds values
+
+  // make sure all inputs are provided... because there is not button to submit -autosubmission
+ //values are valid
+ const colorCode = "#"+[ input1, input2, input3, input4, input5, input6].join("");
+bodyDOM.style.transition = "all 0.3s ease-in-out";
+  bodyDOM.style.backgroundColor = colorCode;
+  headerLabel.textContent = colorCode;
+  //set the color value to the input fields
+ return colorCode;
+}
+
 sManual.addEventListener("change", () => {
   if (sStandard.checked) {
-    //do something
+    //reveal and activate input section box
+    randomButton.style.visibility="hidden";
+    inputSectionBox.style.visibility="visible";
+    //opacityInputBox.style.visibility ="hidden";
+    getInputValue();
   }});
 
-
+//functon that uses returns value from getInputVale()
 sGradient.addEventListener("change", () => {
   if (sStandard.checked) {
     //do something
+    const standardColor = getInputValue();
+    const opColor= [standardColor, opacityValue].join("");
+    
+    bodyDOM.style.transition = "all 0.3s ease-in-out";
+  bodyDOM.style.backgroundColor = opColor;
+  headerLabel.textContent = opColor;
+  //set the color value to the input fields
   }});
 
