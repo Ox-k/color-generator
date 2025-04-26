@@ -28,7 +28,9 @@ const bodyDOM = document.querySelector("body");
 this array is where we will get the values for the color picker
 */
 const valueStore = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-//set the color to the boody element
+//function to set the color to the boody element
+
+function randomButtonFunction(){
 randomButton.addEventListener("click", () => {
   //create an array that will hold the color values
   const colorStore = [];
@@ -50,8 +52,22 @@ randomButton.addEventListener("click", () => {
 
 sStandard.addEventListener("change", () => {
   if (sStandard.checked) {
-    //do something
-  } else {
-    //do something else
-  }
+    //change to random buttom
+    randomButton.style.visibility="visible";
+    randomButtonFuncton();
+    
+  } 
 });
+}
+
+sManual.addEventListener("change", () => {
+  if (sStandard.checked) {
+    //do something
+  }});
+
+
+sGradient.addEventListener("change", () => {
+  if (sStandard.checked) {
+    //do something
+  }});
+
