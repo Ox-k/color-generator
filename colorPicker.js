@@ -24,6 +24,9 @@ const opacityValue = document.querySelector(".colorOpacity");
 //get the body element
 const bodyDOM = document.querySelector("body");
 
+//getting the input section box
+const inputSectionBox = document.querySelector(".standard");
+
 /*create an array that has values from 0 to 9 and A to F
 this array is where we will get the values for the color picker
 */
@@ -54,6 +57,8 @@ sStandard.addEventListener("change", () => {
   if (sStandard.checked) {
     //change to random buttom
     randomButton.style.visibility="visible";
+    inputSectionBox.style.visibility="hidden";
+    //opacityInputBox.style.visibility ="hidden";
     randomButtonFuncton();
     
   } 
