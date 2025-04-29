@@ -1,15 +1,20 @@
-// query the DOM tree
+//get the body element
+const bodyDOM = document.querySelector("body");
+
 //get the header h1
 const headerLabel = document.querySelector("h1");
 
 //get the input buttons
 const sStandard = document.querySelector("#selectStandard");
 const sManual = document.querySelector("#selectSManual");
-const sGradient = document.querySelector("#selectGradient");
 
 //get the random button generator
 const randomButton = document.querySelector(".random-generate");
 
+//getting the input section box
+const inputSectionBox = document.querySelector(".standard");
+// inputSectionBox.style.visibility = "hidden";
+const btn = document.querySelector(".sbmt");
 //get the color picker input
 const input1 = document.querySelector(".colorDigit1");
 const input2 = document.querySelector(".colorDigit2");
@@ -21,84 +26,93 @@ const input6 = document.querySelector(".colorDigit6");
 //getting input color values for the opacity
 const opacityValue = document.querySelector(".colorOpacity");
 
-//get the body element
-const bodyDOM = document.querySelector("body");
-
 //getting the input section box
-const inputSectionBox = document.querySelector(".standard");
+const itemArray = [inputSectionBox, randomButton,btn];
+
+//hide everything as soon as the page loads
+for (let i = 0; i < itemArray.length; i++) {
+  itemArray[i].style.visibility = "hidden";
+}
 
 /*create an array that has values from 0 to 9 and A to F
 this array is where we will get the values for the color picker
 */
-const valueStore = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-//function to set the color to the boody element
+const valueStore = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 
-function randomButtonFunction(){
+ //generate random color
+function activateRandomButtonAttributes(){
+  //array to hold values
+  let colorStore = [];
+    for (let i = 0; i < 6; i++) {
+      /*get a random value from the valueStore arrayas strings*/
+      const randomValue = 
+            String(Math.floor(Math.random() * valueStore.length)+1);
+      //push the random value to the colorStore array
+      colorStore.push(valueStore[randomValue]);
+    }
+  //return the array
+    return colorStore;
+}
+
+//function to set styles to the DOM
+function setDOMattributes(argument){
+      bodyDOM.style.backgroundColor = argument;
+      headerLabel.textContent = argument;
+}
+//add a listener to the random button, get color, use it
 randomButton.addEventListener("click", () => {
-  //create an array that will hold the color values
-  const colorStore = [];
-  for (let i = 0; i < 6; i++) {
-    /*get a random value from the valueStore array, convert to string and push it to the colorStore array*/
-    const randomValue = String(Math.floor(Math.random() * valueStore.length));
-    //push the random value to the colorStore array
-    colorStore.push(valueStore[randomValue]);
+    let colorValues = activateRandomButtonAttributes();
+      let colr = `#${colorValues.join("")}`;
+      bodyDOM.style.transition = "all 0.3s ease-in-out";
+      // bodyDOM.style.backgroundColor = colr;
+      // headerLabel.textContent = colr;
+      setDOMattributes(colr);
+});
+
+ sStandard.addEventListener("change", () => {
+    if (sStandard.checked) {
+      randomButton.style.visibility = "visible";
+      inputSectionBox.style.visibility = "hidden";
+      btn.style.visibility = "hidden";
+    }
+  });
+
+
+
+
+
+//function to obtain input
+function obtainValidInput(){
+  let obtainedColors = [input1, input2, input3, input4, input5, input6];
+  let colorCode = [];
+  for(let i=0; i< obtainedColors.length; i++){
+    if(
+      obtainedColors[i].value.trim() !=='' && valueStore.some(
+        e =>e.includes(obtainedColors[i].value.toUpperCase()))){
+      colorCode.push(obtainedColors[i].value.toUpperCase());
+    }else{
+      //return empty array
+      colorCode = ['f','f','f'];
+      return colorCode;
+    }
   }
-
-  //join the values together to form a string
-  //this string will be used to set the color
-  let colorValue = `#${colorStore.join("")}`;
-  bodyDOM.style.transition = "all 0.3s ease-in-out";
-  bodyDOM.style.backgroundColor = colorValue;
-  headerLabel.textContent = colorValue;
-  //set the color value to the input fields
-});
-
-sStandard.addEventListener("change", () => {
-  if (sStandard.checked) {
-    //change to random buttom
-    randomButton.style.visibility="visible";
-    inputSectionBox.style.visibility="hidden";
-    //opacityInputBox.style.visibility ="hidden";
-    randomButtonFuncton();
-    
-  } 
-});
+  //return array of colorCode
+  return colorCode;
 }
 
-//function to get input values
-function getInputValue(){
-  // check out of bounds values
-
-  // make sure all inputs are provided... because there is not button to submit -autosubmission
- //values are valid
- const colorCode = "#"+[ input1, input2, input3, input4, input5, input6].join("");
-bodyDOM.style.transition = "all 0.3s ease-in-out";
-  bodyDOM.style.backgroundColor = colorCode;
-  headerLabel.textContent = colorCode;
-  //set the color value to the input fields
- return colorCode;
-}
-
+//set up manual input
 sManual.addEventListener("change", () => {
-  if (sStandard.checked) {
+  if (sManual.checked) {
     //reveal and activate input section box
-    randomButton.style.visibility="hidden";
-    inputSectionBox.style.visibility="visible";
-    //opacityInputBox.style.visibility ="hidden";
-    getInputValue();
-  }});
-
-//functon that uses returns value from getInputVale()
-sGradient.addEventListener("change", () => {
-  opacityValue.style.visibility ="hidden";
-  if (sStandard.checked) {
-    //do something
-    const standardColor = getInputValue();
-    const opColor= [standardColor, opacityValue].join("");
-    
-    bodyDOM.style.transition = "all 0.3s ease-in-out";
-  bodyDOM.style.backgroundColor = opColor;
-  headerLabel.textContent = opColor;
-  //set the color value to the input fields
-  }});
+    randomButton.style.visibility = "hidden";
+    inputSectionBox.style.visibility = "visible";
+    btn.style.visibility = "visible";
+    let functionReturnedCode = obtainValidInput();
+    const colorCode = "#" + functionReturnedCode.join("");
+    btn.addEventListener('click', ()=>{
+          bodyDOM.style.transition = "all 0.3s ease-in-out";
+          setDOMattributes(colorCode);
+    });
+  }
+});
 
