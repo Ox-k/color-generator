@@ -46,7 +46,6 @@ section {
   align-items: center;
 }
 input {
-  /* visibility: hidden; */
   border: none;
   border-radius: 1rem;
   font-size: 5rem;
@@ -84,19 +83,10 @@ button:active {
   cursor: pointer;
   transform: scale(0.95);
 }
-.colorOpacity {
-  /* visibility: hidden; */
-  width: fit-content;
-  background-color: #dddddd;
-  border: 1px solid #dddddd;
-}
 
 input:focus,
 input:focus-visible,
-input:focus-within,
-.colorOpacity:focus,
-.colorOpacity:focus-visible,
-.colorOpacity:focus-within {
+input:focus-within{
   outline: none;
   background-color: #b5b5b5;
   border: 1px solid rgb(250, 54, 54);
@@ -106,9 +96,7 @@ input:focus-within,
 }
 .radioSize:hover,
 input:hover,
-input:hover:focus,
-.colorOpacity:hover,
-.colorOpacity:hover:focus {
+input:hover:focus{
   border: 1px solid #5aff01;
   box-shadow: 0 0 10px #5aff0126;
   cursor: pointer;
@@ -176,8 +164,4 @@ input[type="radio"]:checked::before {
   gap: 1rem;
   font-size: 2rem;
   font-family: inherit;
-}
-.standard,
-.colorOpacity {
-  visibility: hidden;
 }
