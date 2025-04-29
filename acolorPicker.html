@@ -7,9 +7,9 @@
     <title>Color Picker</title>
   </head>
   <body>
-    <header>
+   <header>
       <h1>Color Picker</h1>
-    </header>
+</header>
     <main>
       <div class="selectMode">
         <input
@@ -18,7 +18,6 @@
           class="radioSize"
           id="selectStandard"
           value="stdrd"
-          checked
         />Auto-generate
         <input
           type="radio"
@@ -27,13 +26,7 @@
           id="selectSManual"
           value="mnl"
         />Manual Input
-        <input
-          type="radio"
-          name="select"
-          class="radioSize"
-          id="selectGradient"
-          value="grdnt"
-        />Add Opacity
+        <button type"submit" class="sbmt">Apply</button>
       </div>
       <!-- auto generating color with a single buton press -->
       <section class="auto-generator">
@@ -89,17 +82,7 @@
           class="colorDigit6"
           placeholder="0"
         />
-        <input
-          type="text"
-          name="colorOpacity"
-          size="2"
-          maxlength="2"
-          class="colorOpacity"
-          placeholder="00"
-        />
       </section>
-
-      <!-- generating gradient color through user input with opacity -->
     </main>
     <script src="colorPicker.js"></script>
   </body>
